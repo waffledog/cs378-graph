@@ -1,0 +1,35 @@
+commit e9ff03992d3e24fdad093c8c397b54899c495780
+Author: Yun Wen Chen <dianachen@utexas.edu>
+Date:   Wed Aug 6 17:13:00 2014 -0500
+
+    doxyfile, Resolve #16
+
+commit 81c2311845f7b5e2406df7a25b102756526c235a
+Author: Yun Wen Chen <dianachen@utexas.edu>
+Date:   Wed Aug 6 16:42:05 2014 -0500
+
+    changed edge container to set to maintain order
+
+commit 45db30c4e42f104a198731493b3d2c4e10067ccf
+Author: Yun Wen Chen <dianachen@utexas.edu>
+Date:   Wed Aug 6 16:38:22 2014 -0500
+
+    added more edge cases
+
+commit a520cb36a3cb36d90aa0eabda17aa5c8f213edf3
+Author: Yun Wen Chen <dianachen@utexas.edu>
+Date:   Wed Aug 6 16:24:06 2014 -0500
+
+    simplest possible solution, Resolve #13
+
+commit 640a377237a1a31aa04fabc7a5ef81c998d32440
+Author: Yun Wen Chen <dianachen@utexas.edu>
+Date:   Tue Aug 5 14:48:29 2014 -0500
+
+    wrote test cases, Resolve #11
+
+commit 06ed4143272125cc28f3ab705303e197e47533b4
+Author: Yun Wen Chen <dianachen@utexas.edu>
+Date:   Mon Jul 28 14:49:36 2014 -0500
+
+    first commit
