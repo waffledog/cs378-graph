@@ -77,6 +77,7 @@ typedef testing::Types<
             Graph>
         my_types;
 
+
 TYPED_TEST_CASE(TestGraph, my_types);
 
 TYPED_TEST(TestGraph, Graph_Constructor_1) {
