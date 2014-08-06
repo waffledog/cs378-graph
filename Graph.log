@@ -1,3 +1,21 @@
+commit f1896e9f316c6ec03658cde5c4752bd4b65156bf
+Author: Yun Wen Chen <dianachen@utexas.edu>
+Date:   Wed Aug 6 17:22:39 2014 -0500
+
+    change vertex_descriptor container
+
+commit 6372c79796aa6a6f33fc26611c1cbef77efcc1cb
+Author: Yun Wen Chen <dianachen@utexas.edu>
+Date:   Wed Aug 6 17:20:00 2014 -0500
+
+    changed vertex_descriptor container
+
+commit adee425688809536296daeb8a1aa222ac193188c
+Author: Yun Wen Chen <dianachen@utexas.edu>
+Date:   Wed Aug 6 17:14:38 2014 -0500
+
+    log and unit test results
+
 commit e9ff03992d3e24fdad093c8c397b54899c495780
 Author: Yun Wen Chen <dianachen@utexas.edu>
 Date:   Wed Aug 6 17:13:00 2014 -0500
