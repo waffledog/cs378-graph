@@ -145,127 +145,123 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00074"></a>00074             <a class="code" href="classGraph.html#a9b97d75f995b7c1cb0b5760690bef3ba">vertex_descriptor</a> v = g.<a class="code" href="classGraph.html#ae50146a305649fb702a4be9aa36699ef">_g</a>.size(); <span class="comment">// ! new vertex value is the size of the graph</span>
 <a name="l00075"></a>00075             g.<a class="code" href="classGraph.html#a010db4190b54cdf67987ddb23a0dca63">_v</a>.push_back(v); <span class="comment">//added vertex to graph vertices container</span>
 <a name="l00076"></a>00076             g.<a class="code" href="classGraph.html#ae50146a305649fb702a4be9aa36699ef">_g</a>.push_back(std::set&lt;vertex_descriptor&gt;()); <span class="comment">// new adjacency matrix for a graph</span>
-<a name="l00077"></a>00077             assert(g.<a class="code" href="classGraph.html#ae50146a305649fb702a4be9aa36699ef">_g</a>.size() == g.<a class="code" href="classGraph.html#a010db4190b54cdf67987ddb23a0dca63">_v</a>.size());
-<a name="l00078"></a>00078             <span class="keywordflow">return</span> v;}
-<a name="l00079"></a>00079 
-<a name="l00080"></a>00080         <span class="comment">// -----------------</span>
-<a name="l00081"></a>00081         <span class="comment">// adjacent_vertices</span>
-<a name="l00082"></a>00082         <span class="comment">// -----------------</span>
-<a name="l00083"></a>00083 
-<a name="l00089"></a><a class="code" href="classGraph.html#a8b26e739f66119542aa05ebf22d95ccc">00089</a>         <span class="keyword">friend</span> std::pair&lt;adjacency_iterator, adjacency_iterator&gt; <a class="code" href="classGraph.html#a8b26e739f66119542aa05ebf22d95ccc">adjacent_vertices</a> (<a class="code" href="classGraph.html#a9b97d75f995b7c1cb0b5760690bef3ba">vertex_descriptor</a> v, <span class="keyword">const</span> <a class="code" href="classGraph.html">Graph</a>&amp; g) {
-<a name="l00090"></a>00090             <span class="comment">// &lt;your code&gt;</span>
-<a name="l00091"></a>00091             <a class="code" href="classGraph.html#ad03c07358f7be9768eba3825f75ded45">adjacency_iterator</a> b = g.<a class="code" href="classGraph.html#ae50146a305649fb702a4be9aa36699ef">_g</a>[v].begin(); 
-<a name="l00092"></a>00092             <a class="code" href="classGraph.html#ad03c07358f7be9768eba3825f75ded45">adjacency_iterator</a> e = g.<a class="code" href="classGraph.html#ae50146a305649fb702a4be9aa36699ef">_g</a>[v].end();
-<a name="l00093"></a>00093             assert(g.<a class="code" href="classGraph.html#ae50146a305649fb702a4be9aa36699ef">_g</a>.size() == g.<a class="code" href="classGraph.html#a010db4190b54cdf67987ddb23a0dca63">_v</a>.size());
-<a name="l00094"></a>00094             <span class="keywordflow">return</span> std::make_pair(b, e);}
-<a name="l00095"></a>00095 
-<a name="l00096"></a>00096         <span class="comment">// ----</span>
-<a name="l00097"></a>00097         <span class="comment">// edge</span>
-<a name="l00098"></a>00098         <span class="comment">// ----</span>
-<a name="l00099"></a>00099 
-<a name="l00106"></a><a class="code" href="classGraph.html#a89dadf428acbcef84f8b8f79a2744c34">00106</a>         <span class="keyword">friend</span> std::pair&lt;edge_descriptor, bool&gt; <a class="code" href="classGraph.html#a89dadf428acbcef84f8b8f79a2744c34">edge</a> (<a class="code" href="classGraph.html#a9b97d75f995b7c1cb0b5760690bef3ba">vertex_descriptor</a> s, <a class="code" href="classGraph.html#a9b97d75f995b7c1cb0b5760690bef3ba">vertex_descriptor</a> t, <span class="keyword">const</span> <a class="code" href="classGraph.html">Graph</a>&amp; g) {
-<a name="l00107"></a>00107             <a class="code" href="classGraph.html#ad2d4a30b7897a48729fa7e3bee649d04">edge_descriptor</a> e_ = std::make_pair(s, t); 
-<a name="l00108"></a>00108             assert(g.<a class="code" href="classGraph.html#ae50146a305649fb702a4be9aa36699ef">_g</a>.size() == g.<a class="code" href="classGraph.html#a010db4190b54cdf67987ddb23a0dca63">_v</a>.size());
-<a name="l00109"></a>00109             <a class="code" href="classGraph.html#a1082e7f0c0beefee6a7950e951a081f6">edge_iterator</a> b = g.<a class="code" href="classGraph.html#a7f08413dce63ca7aba3c1f18ee093b17">_e</a>.begin();
-<a name="l00110"></a>00110             <a class="code" href="classGraph.html#a1082e7f0c0beefee6a7950e951a081f6">edge_iterator</a> e = g.<a class="code" href="classGraph.html#a7f08413dce63ca7aba3c1f18ee093b17">_e</a>.end();
-<a name="l00111"></a>00111             <span class="keywordflow">while</span>(b != e) {
-<a name="l00112"></a>00112                 <span class="keywordflow">if</span>((*b).first == s &amp;&amp; (*b).second == t) {
-<a name="l00113"></a>00113                     <span class="keywordflow">return</span> std::make_pair(e_, <span class="keyword">true</span>);}
-<a name="l00114"></a>00114                 ++b;
-<a name="l00115"></a>00115             }
-<a name="l00116"></a>00116             <span class="keywordflow">return</span> std::make_pair(e_, <span class="keyword">false</span>);
-<a name="l00117"></a>00117         }
-<a name="l00118"></a>00118         <span class="comment">// -----</span>
-<a name="l00119"></a>00119         <span class="comment">// edges</span>
-<a name="l00120"></a>00120         <span class="comment">// -----</span>
-<a name="l00121"></a>00121 
-<a name="l00125"></a><a class="code" href="classGraph.html#a9d595e6a5ba50cc48612a97ebb08c423">00125</a>         <span class="keyword">friend</span> std::pair&lt;edge_iterator, edge_iterator&gt; <a class="code" href="classGraph.html#a9d595e6a5ba50cc48612a97ebb08c423">edges</a> (<span class="keyword">const</span> <a class="code" href="classGraph.html">Graph</a>&amp; g) {
-<a name="l00126"></a>00126             <a class="code" href="classGraph.html#a1082e7f0c0beefee6a7950e951a081f6">edge_iterator</a> b = g.<a class="code" href="classGraph.html#a7f08413dce63ca7aba3c1f18ee093b17">_e</a>.begin();
-<a name="l00127"></a>00127             <a class="code" href="classGraph.html#a1082e7f0c0beefee6a7950e951a081f6">edge_iterator</a> e = g.<a class="code" href="classGraph.html#a7f08413dce63ca7aba3c1f18ee093b17">_e</a>.end();
-<a name="l00128"></a>00128             <span class="keywordflow">return</span> std::make_pair(b, e);}
+<a name="l00077"></a>00077             <span class="keywordflow">return</span> v;}
+<a name="l00078"></a>00078 
+<a name="l00079"></a>00079         <span class="comment">// -----------------</span>
+<a name="l00080"></a>00080         <span class="comment">// adjacent_vertices</span>
+<a name="l00081"></a>00081         <span class="comment">// -----------------</span>
+<a name="l00082"></a>00082 
+<a name="l00088"></a><a class="code" href="classGraph.html#a8b26e739f66119542aa05ebf22d95ccc">00088</a>         <span class="keyword">friend</span> std::pair&lt;adjacency_iterator, adjacency_iterator&gt; <a class="code" href="classGraph.html#a8b26e739f66119542aa05ebf22d95ccc">adjacent_vertices</a> (<a class="code" href="classGraph.html#a9b97d75f995b7c1cb0b5760690bef3ba">vertex_descriptor</a> v, <span class="keyword">const</span> <a class="code" href="classGraph.html">Graph</a>&amp; g) {
+<a name="l00089"></a>00089             <a class="code" href="classGraph.html#ad03c07358f7be9768eba3825f75ded45">adjacency_iterator</a> b = g.<a class="code" href="classGraph.html#ae50146a305649fb702a4be9aa36699ef">_g</a>[v].begin(); 
+<a name="l00090"></a>00090             <a class="code" href="classGraph.html#ad03c07358f7be9768eba3825f75ded45">adjacency_iterator</a> e = g.<a class="code" href="classGraph.html#ae50146a305649fb702a4be9aa36699ef">_g</a>[v].end();
+<a name="l00091"></a>00091             <span class="keywordflow">return</span> std::make_pair(b, e);}
+<a name="l00092"></a>00092 
+<a name="l00093"></a>00093         <span class="comment">// ----</span>
+<a name="l00094"></a>00094         <span class="comment">// edge</span>
+<a name="l00095"></a>00095         <span class="comment">// ----</span>
+<a name="l00096"></a>00096 
+<a name="l00103"></a><a class="code" href="classGraph.html#a89dadf428acbcef84f8b8f79a2744c34">00103</a>         <span class="keyword">friend</span> std::pair&lt;edge_descriptor, bool&gt; <a class="code" href="classGraph.html#a89dadf428acbcef84f8b8f79a2744c34">edge</a> (<a class="code" href="classGraph.html#a9b97d75f995b7c1cb0b5760690bef3ba">vertex_descriptor</a> s, <a class="code" href="classGraph.html#a9b97d75f995b7c1cb0b5760690bef3ba">vertex_descriptor</a> t, <span class="keyword">const</span> <a class="code" href="classGraph.html">Graph</a>&amp; g) {
+<a name="l00104"></a>00104             <a class="code" href="classGraph.html#ad2d4a30b7897a48729fa7e3bee649d04">edge_descriptor</a> e_ = std::make_pair(s, t); 
+<a name="l00105"></a>00105             <a class="code" href="classGraph.html#a1082e7f0c0beefee6a7950e951a081f6">edge_iterator</a> b = g.<a class="code" href="classGraph.html#a7f08413dce63ca7aba3c1f18ee093b17">_e</a>.begin();
+<a name="l00106"></a>00106             <a class="code" href="classGraph.html#a1082e7f0c0beefee6a7950e951a081f6">edge_iterator</a> e = g.<a class="code" href="classGraph.html#a7f08413dce63ca7aba3c1f18ee093b17">_e</a>.end();
+<a name="l00107"></a>00107             <span class="keywordflow">while</span>(b != e) {
+<a name="l00108"></a>00108                 <span class="keywordflow">if</span>((*b).first == s &amp;&amp; (*b).second == t) {
+<a name="l00109"></a>00109                     <span class="keywordflow">return</span> std::make_pair(e_, <span class="keyword">true</span>);}
+<a name="l00110"></a>00110                 ++b;
+<a name="l00111"></a>00111             }
+<a name="l00112"></a>00112             <span class="keywordflow">return</span> std::make_pair(e_, <span class="keyword">false</span>);
+<a name="l00113"></a>00113         }
+<a name="l00114"></a>00114         <span class="comment">// -----</span>
+<a name="l00115"></a>00115         <span class="comment">// edges</span>
+<a name="l00116"></a>00116         <span class="comment">// -----</span>
+<a name="l00117"></a>00117 
+<a name="l00121"></a><a class="code" href="classGraph.html#a9d595e6a5ba50cc48612a97ebb08c423">00121</a>         <span class="keyword">friend</span> std::pair&lt;edge_iterator, edge_iterator&gt; <a class="code" href="classGraph.html#a9d595e6a5ba50cc48612a97ebb08c423">edges</a> (<span class="keyword">const</span> <a class="code" href="classGraph.html">Graph</a>&amp; g) {
+<a name="l00122"></a>00122             <a class="code" href="classGraph.html#a1082e7f0c0beefee6a7950e951a081f6">edge_iterator</a> b = g.<a class="code" href="classGraph.html#a7f08413dce63ca7aba3c1f18ee093b17">_e</a>.begin();
+<a name="l00123"></a>00123             <a class="code" href="classGraph.html#a1082e7f0c0beefee6a7950e951a081f6">edge_iterator</a> e = g.<a class="code" href="classGraph.html#a7f08413dce63ca7aba3c1f18ee093b17">_e</a>.end();
+<a name="l00124"></a>00124             <span class="keywordflow">return</span> std::make_pair(b, e);}
+<a name="l00125"></a>00125 
+<a name="l00126"></a>00126         <span class="comment">// ---------</span>
+<a name="l00127"></a>00127         <span class="comment">// num_edges</span>
+<a name="l00128"></a>00128         <span class="comment">// ---------</span>
 <a name="l00129"></a>00129 
-<a name="l00130"></a>00130         <span class="comment">// ---------</span>
-<a name="l00131"></a>00131         <span class="comment">// num_edges</span>
-<a name="l00132"></a>00132         <span class="comment">// ---------</span>
-<a name="l00133"></a>00133 
-<a name="l00137"></a><a class="code" href="classGraph.html#a8762ff8f5b09fea3fdcfb92c2648336e">00137</a>         <span class="keyword">friend</span> <a class="code" href="classGraph.html#a1924745b438f862ba9aa7cd0ff5b7da5">edges_size_type</a> <a class="code" href="classGraph.html#a8762ff8f5b09fea3fdcfb92c2648336e">num_edges</a> (<span class="keyword">const</span> <a class="code" href="classGraph.html">Graph</a>&amp; g) {
-<a name="l00138"></a>00138             <span class="keywordflow">return</span> g.<a class="code" href="classGraph.html#a7f08413dce63ca7aba3c1f18ee093b17">_e</a>.size();}
+<a name="l00133"></a><a class="code" href="classGraph.html#a8762ff8f5b09fea3fdcfb92c2648336e">00133</a>         <span class="keyword">friend</span> <a class="code" href="classGraph.html#a1924745b438f862ba9aa7cd0ff5b7da5">edges_size_type</a> <a class="code" href="classGraph.html#a8762ff8f5b09fea3fdcfb92c2648336e">num_edges</a> (<span class="keyword">const</span> <a class="code" href="classGraph.html">Graph</a>&amp; g) {
+<a name="l00134"></a>00134             <span class="keywordflow">return</span> g.<a class="code" href="classGraph.html#a7f08413dce63ca7aba3c1f18ee093b17">_e</a>.size();}
+<a name="l00135"></a>00135 
+<a name="l00136"></a>00136         <span class="comment">// ------------</span>
+<a name="l00137"></a>00137         <span class="comment">// num_vertices</span>
+<a name="l00138"></a>00138         <span class="comment">// ------------</span>
 <a name="l00139"></a>00139 
-<a name="l00140"></a>00140         <span class="comment">// ------------</span>
-<a name="l00141"></a>00141         <span class="comment">// num_vertices</span>
-<a name="l00142"></a>00142         <span class="comment">// ------------</span>
-<a name="l00143"></a>00143 
-<a name="l00147"></a><a class="code" href="classGraph.html#a58495c0a2630da064db06001bbee4b83">00147</a>         <span class="keyword">friend</span> <a class="code" href="classGraph.html#ac1e19ecbf236d08dff611584e4c9403e">vertices_size_type</a> <a class="code" href="classGraph.html#a58495c0a2630da064db06001bbee4b83">num_vertices</a> (<span class="keyword">const</span> <a class="code" href="classGraph.html">Graph</a>&amp; g) {
-<a name="l00148"></a>00148             <span class="keywordflow">return</span> g.<a class="code" href="classGraph.html#a010db4190b54cdf67987ddb23a0dca63">_v</a>.size();}
+<a name="l00143"></a><a class="code" href="classGraph.html#a58495c0a2630da064db06001bbee4b83">00143</a>         <span class="keyword">friend</span> <a class="code" href="classGraph.html#ac1e19ecbf236d08dff611584e4c9403e">vertices_size_type</a> <a class="code" href="classGraph.html#a58495c0a2630da064db06001bbee4b83">num_vertices</a> (<span class="keyword">const</span> <a class="code" href="classGraph.html">Graph</a>&amp; g) {
+<a name="l00144"></a>00144             <span class="keywordflow">return</span> g.<a class="code" href="classGraph.html#a010db4190b54cdf67987ddb23a0dca63">_v</a>.size();}
+<a name="l00145"></a>00145 
+<a name="l00146"></a>00146         <span class="comment">// ------</span>
+<a name="l00147"></a>00147         <span class="comment">// source</span>
+<a name="l00148"></a>00148         <span class="comment">// ------</span>
 <a name="l00149"></a>00149 
-<a name="l00150"></a>00150         <span class="comment">// ------</span>
-<a name="l00151"></a>00151         <span class="comment">// source</span>
-<a name="l00152"></a>00152         <span class="comment">// ------</span>
-<a name="l00153"></a>00153 
-<a name="l00158"></a><a class="code" href="classGraph.html#a020a156909a35b3890c3b53bada88908">00158</a>         <span class="keyword">friend</span> <a class="code" href="classGraph.html#a9b97d75f995b7c1cb0b5760690bef3ba">vertex_descriptor</a> <a class="code" href="classGraph.html#a020a156909a35b3890c3b53bada88908">source</a> (<a class="code" href="classGraph.html#ad2d4a30b7897a48729fa7e3bee649d04">edge_descriptor</a> e, <span class="keyword">const</span> <a class="code" href="classGraph.html">Graph</a>&amp;) {
-<a name="l00159"></a>00159             <span class="keywordflow">return</span> e.first;}
+<a name="l00154"></a><a class="code" href="classGraph.html#a020a156909a35b3890c3b53bada88908">00154</a>         <span class="keyword">friend</span> <a class="code" href="classGraph.html#a9b97d75f995b7c1cb0b5760690bef3ba">vertex_descriptor</a> <a class="code" href="classGraph.html#a020a156909a35b3890c3b53bada88908">source</a> (<a class="code" href="classGraph.html#ad2d4a30b7897a48729fa7e3bee649d04">edge_descriptor</a> e, <span class="keyword">const</span> <a class="code" href="classGraph.html">Graph</a>&amp;) {
+<a name="l00155"></a>00155             <span class="keywordflow">return</span> e.first;}
+<a name="l00156"></a>00156 
+<a name="l00157"></a>00157         <span class="comment">// ------</span>
+<a name="l00158"></a>00158         <span class="comment">// target</span>
+<a name="l00159"></a>00159         <span class="comment">// ------</span>
 <a name="l00160"></a>00160 
-<a name="l00161"></a>00161         <span class="comment">// ------</span>
-<a name="l00162"></a>00162         <span class="comment">// target</span>
-<a name="l00163"></a>00163         <span class="comment">// ------</span>
-<a name="l00164"></a>00164 
-<a name="l00169"></a><a class="code" href="classGraph.html#a3beb82149917a4da28bc327a58914392">00169</a>         <span class="keyword">friend</span> <a class="code" href="classGraph.html#a9b97d75f995b7c1cb0b5760690bef3ba">vertex_descriptor</a> <a class="code" href="classGraph.html#a3beb82149917a4da28bc327a58914392">target</a> (<a class="code" href="classGraph.html#ad2d4a30b7897a48729fa7e3bee649d04">edge_descriptor</a> e, <span class="keyword">const</span> <a class="code" href="classGraph.html">Graph</a>&amp;) {
-<a name="l00170"></a>00170             <span class="keywordflow">return</span> e.second;}
+<a name="l00165"></a><a class="code" href="classGraph.html#a3beb82149917a4da28bc327a58914392">00165</a>         <span class="keyword">friend</span> <a class="code" href="classGraph.html#a9b97d75f995b7c1cb0b5760690bef3ba">vertex_descriptor</a> <a class="code" href="classGraph.html#a3beb82149917a4da28bc327a58914392">target</a> (<a class="code" href="classGraph.html#ad2d4a30b7897a48729fa7e3bee649d04">edge_descriptor</a> e, <span class="keyword">const</span> <a class="code" href="classGraph.html">Graph</a>&amp;) {
+<a name="l00166"></a>00166             <span class="keywordflow">return</span> e.second;}
+<a name="l00167"></a>00167 
+<a name="l00168"></a>00168         <span class="comment">// ------</span>
+<a name="l00169"></a>00169         <span class="comment">// vertex</span>
+<a name="l00170"></a>00170         <span class="comment">// ------</span>
 <a name="l00171"></a>00171 
-<a name="l00172"></a>00172         <span class="comment">// ------</span>
-<a name="l00173"></a>00173         <span class="comment">// vertex</span>
-<a name="l00174"></a>00174         <span class="comment">// ------</span>
-<a name="l00175"></a>00175 
-<a name="l00181"></a><a class="code" href="classGraph.html#a761b5a959afd03c4213221bf98a21a74">00181</a>         <span class="keyword">friend</span> <a class="code" href="classGraph.html#a9b97d75f995b7c1cb0b5760690bef3ba">vertex_descriptor</a> <a class="code" href="classGraph.html#a761b5a959afd03c4213221bf98a21a74">vertex</a> (<a class="code" href="classGraph.html#ac1e19ecbf236d08dff611584e4c9403e">vertices_size_type</a> idx, <span class="keyword">const</span> <a class="code" href="classGraph.html">Graph</a>&amp; g) {
-<a name="l00182"></a>00182             <span class="keywordflow">if</span>(idx &gt;= g.<a class="code" href="classGraph.html#a010db4190b54cdf67987ddb23a0dca63">_v</a>.size())
-<a name="l00183"></a>00183                 <span class="keywordflow">return</span> idx;
-<a name="l00184"></a>00184             <span class="keywordflow">return</span> g.<a class="code" href="classGraph.html#a010db4190b54cdf67987ddb23a0dca63">_v</a>[idx];}
+<a name="l00177"></a><a class="code" href="classGraph.html#a761b5a959afd03c4213221bf98a21a74">00177</a>         <span class="keyword">friend</span> <a class="code" href="classGraph.html#a9b97d75f995b7c1cb0b5760690bef3ba">vertex_descriptor</a> <a class="code" href="classGraph.html#a761b5a959afd03c4213221bf98a21a74">vertex</a> (<a class="code" href="classGraph.html#ac1e19ecbf236d08dff611584e4c9403e">vertices_size_type</a> idx, <span class="keyword">const</span> <a class="code" href="classGraph.html">Graph</a>&amp; g) {
+<a name="l00178"></a>00178             <span class="keywordflow">if</span>(idx &gt;= g.<a class="code" href="classGraph.html#a010db4190b54cdf67987ddb23a0dca63">_v</a>.size())
+<a name="l00179"></a>00179                 <span class="keywordflow">return</span> idx;
+<a name="l00180"></a>00180             <span class="keywordflow">return</span> g.<a class="code" href="classGraph.html#a010db4190b54cdf67987ddb23a0dca63">_v</a>[idx];}
+<a name="l00181"></a>00181 
+<a name="l00182"></a>00182         <span class="comment">// --------</span>
+<a name="l00183"></a>00183         <span class="comment">// vertices</span>
+<a name="l00184"></a>00184         <span class="comment">// --------</span>
 <a name="l00185"></a>00185 
-<a name="l00186"></a>00186         <span class="comment">// --------</span>
-<a name="l00187"></a>00187         <span class="comment">// vertices</span>
-<a name="l00188"></a>00188         <span class="comment">// --------</span>
-<a name="l00189"></a>00189 
-<a name="l00194"></a><a class="code" href="classGraph.html#a8af8c02507f2320f17008c3d7e7a471c">00194</a>         <span class="keyword">friend</span> std::pair&lt;vertex_iterator, vertex_iterator&gt; <a class="code" href="classGraph.html#a8af8c02507f2320f17008c3d7e7a471c">vertices</a> (<span class="keyword">const</span> <a class="code" href="classGraph.html">Graph</a>&amp; g) {
-<a name="l00195"></a>00195             <a class="code" href="classGraph.html#aee10ac35c0bad19ebc93f33eb08e149d">vertex_iterator</a> b = g.<a class="code" href="classGraph.html#a010db4190b54cdf67987ddb23a0dca63">_v</a>.begin();
-<a name="l00196"></a>00196             <a class="code" href="classGraph.html#aee10ac35c0bad19ebc93f33eb08e149d">vertex_iterator</a> e = g.<a class="code" href="classGraph.html#a010db4190b54cdf67987ddb23a0dca63">_v</a>.end();
-<a name="l00197"></a>00197             <span class="keywordflow">return</span> std::make_pair(b, e);}
-<a name="l00198"></a>00198 
-<a name="l00199"></a>00199     <span class="keyword">private</span>:
-<a name="l00200"></a>00200         <span class="comment">// ----</span>
-<a name="l00201"></a>00201         <span class="comment">// data</span>
-<a name="l00202"></a>00202         <span class="comment">// ----</span>
-<a name="l00203"></a>00203 
-<a name="l00204"></a><a class="code" href="classGraph.html#ae50146a305649fb702a4be9aa36699ef">00204</a>         std::vector&lt; std::set&lt;vertex_descriptor&gt; &gt; <a class="code" href="classGraph.html#ae50146a305649fb702a4be9aa36699ef">_g</a>; <span class="comment">// ! rename graph container</span>
-<a name="l00205"></a><a class="code" href="classGraph.html#a010db4190b54cdf67987ddb23a0dca63">00205</a>         std::vector&lt;vertex_descriptor&gt; <a class="code" href="classGraph.html#a010db4190b54cdf67987ddb23a0dca63">_v</a>; <span class="comment">// ! container for vertices</span>
-<a name="l00206"></a><a class="code" href="classGraph.html#a7f08413dce63ca7aba3c1f18ee093b17">00206</a>         std::set&lt;edge_descriptor&gt; <a class="code" href="classGraph.html#a7f08413dce63ca7aba3c1f18ee093b17">_e</a>; <span class="comment">// ! container for edges </span>
-<a name="l00207"></a>00207         
-<a name="l00208"></a>00208         <span class="comment">// -----</span>
-<a name="l00209"></a>00209         <span class="comment">// valid</span>
-<a name="l00210"></a>00210         <span class="comment">// -----</span>
-<a name="l00211"></a>00211 
-<a name="l00215"></a><a class="code" href="classGraph.html#ab73ffdaeaaa43310e80b87f0c44c29e4">00215</a>         <span class="keywordtype">bool</span> <a class="code" href="classGraph.html#ab73ffdaeaaa43310e80b87f0c44c29e4">valid</a> ()<span class="keyword"> const </span>{
-<a name="l00216"></a>00216             <span class="keywordflow">return</span> <a class="code" href="classGraph.html#ae50146a305649fb702a4be9aa36699ef">_g</a>.size() == <a class="code" href="classGraph.html#a010db4190b54cdf67987ddb23a0dca63">_v</a>.size();} 
-<a name="l00217"></a>00217 
-<a name="l00218"></a>00218     <span class="keyword">public</span>:
-<a name="l00219"></a>00219         <span class="comment">// ------------</span>
-<a name="l00220"></a>00220         <span class="comment">// constructors</span>
-<a name="l00221"></a>00221         <span class="comment">// ------------</span>
-<a name="l00222"></a>00222 
-<a name="l00228"></a><a class="code" href="classGraph.html#a1878b0fa0906a27d42f3b0fb5f6d217f">00228</a>         <a class="code" href="classGraph.html#a1878b0fa0906a27d42f3b0fb5f6d217f">Graph</a> (std::vector&lt; std::set&lt;vertex_descriptor&gt; &gt; g = std::vector&lt; std::set&lt;vertex_descriptor&gt; &gt;(),
-<a name="l00229"></a>00229             std::vector&lt;vertex_descriptor&gt; v = std::vector&lt;vertex_descriptor&gt;(), 
-<a name="l00230"></a>00230             std::set&lt;edge_descriptor&gt; e = std::set&lt;edge_descriptor&gt;()) :
-<a name="l00231"></a>00231             <a class="code" href="classGraph.html#ae50146a305649fb702a4be9aa36699ef">_g</a>(g),
-<a name="l00232"></a>00232             <a class="code" href="classGraph.html#a010db4190b54cdf67987ddb23a0dca63">_v</a>(v),
-<a name="l00233"></a>00233             <a class="code" href="classGraph.html#a7f08413dce63ca7aba3c1f18ee093b17">_e</a>(e) {
-<a name="l00234"></a>00234             assert(<a class="code" href="classGraph.html#ab73ffdaeaaa43310e80b87f0c44c29e4">valid</a>());}
-<a name="l00235"></a>00235 
-<a name="l00236"></a>00236         <span class="comment">// Default copy, destructor, and copy assignment</span>
-<a name="l00237"></a>00237         <span class="comment">// Graph  (const Graph&lt;T&gt;&amp;);</span>
-<a name="l00238"></a>00238         <span class="comment">// ~Graph ();</span>
-<a name="l00239"></a>00239         <span class="comment">// Graph&amp; operator = (const Graph&amp;);</span>
-<a name="l00240"></a>00240     };
-<a name="l00241"></a>00241 
-<a name="l00242"></a>00242 <span class="preprocessor">#endif // Graph_h</span>
+<a name="l00190"></a><a class="code" href="classGraph.html#a8af8c02507f2320f17008c3d7e7a471c">00190</a>         <span class="keyword">friend</span> std::pair&lt;vertex_iterator, vertex_iterator&gt; <a class="code" href="classGraph.html#a8af8c02507f2320f17008c3d7e7a471c">vertices</a> (<span class="keyword">const</span> <a class="code" href="classGraph.html">Graph</a>&amp; g) {
+<a name="l00191"></a>00191             <a class="code" href="classGraph.html#aee10ac35c0bad19ebc93f33eb08e149d">vertex_iterator</a> b = g.<a class="code" href="classGraph.html#a010db4190b54cdf67987ddb23a0dca63">_v</a>.begin();
+<a name="l00192"></a>00192             <a class="code" href="classGraph.html#aee10ac35c0bad19ebc93f33eb08e149d">vertex_iterator</a> e = g.<a class="code" href="classGraph.html#a010db4190b54cdf67987ddb23a0dca63">_v</a>.end();
+<a name="l00193"></a>00193             <span class="keywordflow">return</span> std::make_pair(b, e);}
+<a name="l00194"></a>00194 
+<a name="l00195"></a>00195     <span class="keyword">private</span>:
+<a name="l00196"></a>00196         <span class="comment">// ----</span>
+<a name="l00197"></a>00197         <span class="comment">// data</span>
+<a name="l00198"></a>00198         <span class="comment">// ----</span>
+<a name="l00199"></a>00199 
+<a name="l00200"></a><a class="code" href="classGraph.html#ae50146a305649fb702a4be9aa36699ef">00200</a>         std::vector&lt; std::set&lt;vertex_descriptor&gt; &gt; <a class="code" href="classGraph.html#ae50146a305649fb702a4be9aa36699ef">_g</a>; <span class="comment">// ! rename graph container</span>
+<a name="l00201"></a><a class="code" href="classGraph.html#a010db4190b54cdf67987ddb23a0dca63">00201</a>         std::vector&lt;vertex_descriptor&gt; <a class="code" href="classGraph.html#a010db4190b54cdf67987ddb23a0dca63">_v</a>; <span class="comment">// ! container for vertices</span>
+<a name="l00202"></a><a class="code" href="classGraph.html#a7f08413dce63ca7aba3c1f18ee093b17">00202</a>         std::set&lt;edge_descriptor&gt; <a class="code" href="classGraph.html#a7f08413dce63ca7aba3c1f18ee093b17">_e</a>; <span class="comment">// ! container for edges </span>
+<a name="l00203"></a>00203         
+<a name="l00204"></a>00204         <span class="comment">// -----</span>
+<a name="l00205"></a>00205         <span class="comment">// valid</span>
+<a name="l00206"></a>00206         <span class="comment">// -----</span>
+<a name="l00207"></a>00207 
+<a name="l00211"></a><a class="code" href="classGraph.html#ab73ffdaeaaa43310e80b87f0c44c29e4">00211</a>         <span class="keywordtype">bool</span> <a class="code" href="classGraph.html#ab73ffdaeaaa43310e80b87f0c44c29e4">valid</a> ()<span class="keyword"> const </span>{
+<a name="l00212"></a>00212             <span class="keywordflow">return</span> <a class="code" href="classGraph.html#ae50146a305649fb702a4be9aa36699ef">_g</a>.size() == <a class="code" href="classGraph.html#a010db4190b54cdf67987ddb23a0dca63">_v</a>.size();} 
+<a name="l00213"></a>00213 
+<a name="l00214"></a>00214     <span class="keyword">public</span>:
+<a name="l00215"></a>00215         <span class="comment">// ------------</span>
+<a name="l00216"></a>00216         <span class="comment">// constructors</span>
+<a name="l00217"></a>00217         <span class="comment">// ------------</span>
+<a name="l00218"></a>00218 
+<a name="l00224"></a><a class="code" href="classGraph.html#a1878b0fa0906a27d42f3b0fb5f6d217f">00224</a>         <a class="code" href="classGraph.html#a1878b0fa0906a27d42f3b0fb5f6d217f">Graph</a> (std::vector&lt; std::set&lt;vertex_descriptor&gt; &gt; g = std::vector&lt; std::set&lt;vertex_descriptor&gt; &gt;(),
+<a name="l00225"></a>00225             std::vector&lt;vertex_descriptor&gt; v = std::vector&lt;vertex_descriptor&gt;(), 
+<a name="l00226"></a>00226             std::set&lt;edge_descriptor&gt; e = std::set&lt;edge_descriptor&gt;()) :
+<a name="l00227"></a>00227             <a class="code" href="classGraph.html#ae50146a305649fb702a4be9aa36699ef">_g</a>(g),
+<a name="l00228"></a>00228             <a class="code" href="classGraph.html#a010db4190b54cdf67987ddb23a0dca63">_v</a>(v),
+<a name="l00229"></a>00229             <a class="code" href="classGraph.html#a7f08413dce63ca7aba3c1f18ee093b17">_e</a>(e) {
+<a name="l00230"></a>00230             assert(<a class="code" href="classGraph.html#ab73ffdaeaaa43310e80b87f0c44c29e4">valid</a>());}
+<a name="l00231"></a>00231 
+<a name="l00232"></a>00232         <span class="comment">// Default copy, destructor, and copy assignment</span>
+<a name="l00233"></a>00233         <span class="comment">// Graph  (const Graph&lt;T&gt;&amp;);</span>
+<a name="l00234"></a>00234         <span class="comment">// ~Graph ();</span>
+<a name="l00235"></a>00235         <span class="comment">// Graph&amp; operator = (const Graph&amp;);</span>
+<a name="l00236"></a>00236     };
+<a name="l00237"></a>00237 
+<a name="l00238"></a>00238 <span class="preprocessor">#endif // Graph_h</span>
 </pre></div></div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
@@ -284,7 +280,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Aug 6 2014 17:27:16 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Aug 7 2014 15:49:37 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

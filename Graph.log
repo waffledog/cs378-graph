@@ -1,3 +1,21 @@
+commit ac10d37c97588ba103cd4ece34b99f1ba9a25d76
+Author: Yun Wen Chen <dianachen@utexas.edu>
+Date:   Thu Aug 7 15:48:38 2014 -0500
+
+    remove assumptions
+
+commit 00404e2769db78e954d4f647dd037ef702e729a0
+Author: Yun Wen Chen <dianachen@utexas.edu>
+Date:   Wed Aug 6 17:27:34 2014 -0500
+
+    doxyfile
+
+commit 823f49f054d6a9bd2e7e42295752145e3301bf9e
+Author: Yun Wen Chen <dianachen@utexas.edu>
+Date:   Wed Aug 6 17:23:35 2014 -0500
+
+    add commits
+
 commit f1896e9f316c6ec03658cde5c4752bd4b65156bf
 Author: Yun Wen Chen <dianachen@utexas.edu>
 Date:   Wed Aug 6 17:22:39 2014 -0500
