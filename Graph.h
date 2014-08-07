@@ -74,7 +74,6 @@ class Graph {
             vertex_descriptor v = g._g.size(); // ! new vertex value is the size of the graph
             g._v.push_back(v); //added vertex to graph vertices container
             g._g.push_back(std::set<vertex_descriptor>()); // new adjacency matrix for a graph
-            assert(g._g.size() == g._v.size());
             return v;}
 
         // -----------------
@@ -87,10 +86,8 @@ class Graph {
          * @return : iterator to the vector of adjacent vertices to v. 
          */
         friend std::pair<adjacency_iterator, adjacency_iterator> adjacent_vertices (vertex_descriptor v, const Graph& g) {
-            // <your code>
             adjacency_iterator b = g._g[v].begin(); 
             adjacency_iterator e = g._g[v].end();
-            assert(g._g.size() == g._v.size());
             return std::make_pair(b, e);}
 
         // ----
@@ -105,7 +102,6 @@ class Graph {
          */
         friend std::pair<edge_descriptor, bool> edge (vertex_descriptor s, vertex_descriptor t, const Graph& g) {
             edge_descriptor e_ = std::make_pair(s, t); 
-            assert(g._g.size() == g._v.size());
             edge_iterator b = g._e.begin();
             edge_iterator e = g._e.end();
             while(b != e) {
